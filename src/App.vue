@@ -8,6 +8,7 @@
       @start="start"
       @lap="lap"
       @pause="pause"
+      @stop="stop"
       />
     </v-content>
   </v-app>
@@ -53,6 +54,12 @@ export default {
     pause(){
       window.clearInterval(this.ticker);
       this.timerState = 'paused';
+    },
+    stop(){
+      window.clearInterval(this.ticker);
+      this.currentTimer = 0;
+      this.formattedTime = "00:00:00";
+      this.timerState = " stopped";
     },
     tick(){
       this.ticker = setInterval(() => {

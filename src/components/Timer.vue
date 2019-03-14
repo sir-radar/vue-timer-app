@@ -22,7 +22,7 @@
                                 <span class="white--text font-weight-bold text-uppercase">Pause</span>    
                             </v-list-tile>
 
-                            <v-list-tile class="error">
+                            <v-list-tile class="error" @click="$emit('stop')">
                                 <span class="white--text font-weight-bold text-uppercase">Stop</span>    
                             </v-list-tile>
                         </v-list>

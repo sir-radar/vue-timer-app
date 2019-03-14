@@ -10,11 +10,11 @@
 
                     <v-card-text>
                         <v-list>
-                            <v-list-tile class="success mb-3" @click.once="$emit('start')">
+                            <v-list-tile class="success mb-3" @click="$emit('start')">
                                 <span class="white--text font-weight-bold text-uppercase">Start</span>    
                             </v-list-tile>
 
-                            <v-list-tile class="info mb-3">
+                            <v-list-tile class="info mb-3" @click="$emit('lap')">
                                 <span class="white--text font-weight-bold text-uppercase">Lap</span>    
                             </v-list-tile>
 

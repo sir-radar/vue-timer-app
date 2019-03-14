@@ -1,11 +1,12 @@
 <template>
   <v-app>
-    <Navbar/>
+    <Navbar :laps="laps"/>
     <v-content>
      <Timer 
       :timer="formattedTime" 
       :state="timerState"
       @start="start"
+      @lap="lap"
       />
     </v-content>
   </v-app>
@@ -27,7 +28,7 @@ export default {
       currentTimer: 0,
       formattedTime: "00:00:00",
       ticker: null,
-      taps: [],
+      laps: [],
       lastestLap: "",
       snackbar: false
     }
@@ -39,6 +40,14 @@ export default {
         this.timerState = 'running';
       }
       
+    },
+    lap(){
+      this.laps.push({
+        seconds: this.currentTimer,
+        formattedTime: this.formatTime(this.currentTimer)
+      })
+      this.lastestLap = this.formatTime(this.currentTimer);
+      this.currentTimer = 0;
     },
     tick(){
       this.ticker = setInterval(() => {

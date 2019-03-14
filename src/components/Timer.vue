@@ -18,7 +18,7 @@
                                 <span class="white--text font-weight-bold text-uppercase">Lap</span>    
                             </v-list-tile>
 
-                            <v-list-tile class="warning mb-3">
+                            <v-list-tile class="warning mb-3" @click="$emit('pause')">
                                 <span class="white--text font-weight-bold text-uppercase">Pause</span>    
                             </v-list-tile>
 

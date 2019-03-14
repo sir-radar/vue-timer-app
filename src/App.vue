@@ -7,6 +7,7 @@
       :state="timerState"
       @start="start"
       @lap="lap"
+      @pause="pause"
       />
     </v-content>
   </v-app>
@@ -34,7 +35,7 @@ export default {
     }
   },
   methods:{
-    start(){
+    start(){  
       if(this.timerState !== 'running'){
         this.tick();
         this.timerState = 'running';
@@ -49,11 +50,15 @@ export default {
       this.lastestLap = this.formatTime(this.currentTimer);
       this.currentTimer = 0;
     },
+    pause(){
+      window.clearInterval(this.ticker);
+      this.timerState = 'paused';
+    },
     tick(){
       this.ticker = setInterval(() => {
         this.currentTimer++;
         this.formattedTime = this.formatTime(this.currentTimer)
-      }, 1000)
+      }, 500)
     },
     formatTime(seconds){
       let measuredTime = new Date(null);

@@ -10,19 +10,19 @@
 
                     <v-card-text>
                         <v-list>
-                            <v-list-tile class="success mb-3" @click="$emit('start')">
+                            <v-list-tile class="success mb-3" @click="$emit('start')" :disabled="state == 'running'">
                                 <span class="white--text font-weight-bold text-uppercase">Start</span>    
                             </v-list-tile>
 
-                            <v-list-tile class="info mb-3" @click="$emit('lap')">
+                            <v-list-tile class="info mb-3" @click="$emit('lap')" :disabled="state == 'stopped' || state == 'paused'">
                                 <span class="white--text font-weight-bold text-uppercase">Lap</span>    
                             </v-list-tile>
 
-                            <v-list-tile class="warning mb-3" @click="$emit('pause')">
+                            <v-list-tile class="warning mb-3" @click="$emit('pause')" :disabled="state == 'stopped' || state == 'paused'">
                                 <span class="white--text font-weight-bold text-uppercase">Pause</span>    
                             </v-list-tile>
 
-                            <v-list-tile class="error" @click="$emit('stop')">
+                            <v-list-tile class="error" @click="$emit('stop')" :disabled="state == 'stopped'">
                                 <span class="white--text font-weight-bold text-uppercase">Stop</span>    
                             </v-list-tile>
                         </v-list>

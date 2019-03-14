@@ -11,6 +11,15 @@
       @stop="stop"
       />
     </v-content>
+
+    <v-snackbar 
+      v-model="snackbar"
+      color="info"
+      :timeout="2000"
+    >
+      New Lap {{ this.lastestLap }}
+      <v-btn dark flat @click="snackbar = false">Close</v-btn>
+    </v-snackbar>
   </v-app>
 </template>
 
@@ -44,6 +53,7 @@ export default {
       
     },
     lap(){
+      this.snackbar = true;
       this.laps.push({
         seconds: this.currentTimer,
         formattedTime: this.formatTime(this.currentTimer)
@@ -65,7 +75,7 @@ export default {
       this.ticker = setInterval(() => {
         this.currentTimer++;
         this.formattedTime = this.formatTime(this.currentTimer)
-      }, 500)
+      }, 1000)
     },
     formatTime(seconds){
       let measuredTime = new Date(null);

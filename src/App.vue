@@ -34,7 +34,11 @@ export default {
   },
   methods:{
     start(){
-      this.tick()
+      if(this.timerState !== 'running'){
+        this.tick();
+        this.timerState = 'running';
+      }
+      
     },
     tick(){
       this.ticker = setInterval(() => {

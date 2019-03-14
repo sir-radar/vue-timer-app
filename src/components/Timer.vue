@@ -10,7 +10,7 @@
 
                     <v-card-text>
                         <v-list>
-                            <v-list-tile class="success mb-3" @click="$emit('start')">
+                            <v-list-tile class="success mb-3" @click.once="$emit('start')">
                                 <span class="white--text font-weight-bold text-uppercase">Start</span>    
                             </v-list-tile>
 
@@ -23,6 +23,7 @@
                             </v-list-tile>
 
                             <v-list-tile class="error">
+                                <span class="white--text font-weight-bold text-uppercase">Stop</span>    
                             </v-list-tile>
                         </v-list>
                     </v-card-text>

@@ -2,7 +2,11 @@
   <v-app>
     <Navbar/>
     <v-content>
-     <Timer :timer="formattedTime" :state="timerState"/>
+     <Timer 
+      :timer="formattedTime" 
+      :state="timerState"
+      @start="start"
+      />
     </v-content>
   </v-app>
 </template>
@@ -26,6 +30,23 @@ export default {
       taps: [],
       lastestLap: "",
       snackbar: false
+    }
+  },
+  methods:{
+    start(){
+      this.tick()
+    },
+    tick(){
+      this.ticker = setInterval(() => {
+        this.currentTimer++;
+        this.formattedTime = this.formatTime(this.currentTimer)
+      }, 1000)
+    },
+    formatTime(seconds){
+      let measuredTime = new Date(null);
+      measuredTime.setSeconds(seconds);
+      let MHSTime = measuredTime.toISOString().substr(11, 8);
+      return MHSTime;
     }
   }
 }
